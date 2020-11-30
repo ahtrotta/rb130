@@ -48,12 +48,14 @@ class TransactionTest < Minitest::Test
   end
 
   def test_prompt_for_payment
+    output = StringIO.new
+
     input = StringIO.new('11.5\n')
-    @transaction1.prompt_for_payment(input: input)
+    @transaction1.prompt_for_payment(input: input, output: output)
     assert_equal 11.5, @transaction1.amount_paid
 
     input = StringIO.new('10\n')
-    @transaction2.prompt_for_payment(input: input)
+    @transaction2.prompt_for_payment(input: input, output: output)
     assert_equal 10, @transaction2.amount_paid
   end
 end
