@@ -1,0 +1,31 @@
+Group 1
+
+Created a `Proc` object that has one parameter (`thing`) and has one call to
+`Kernel#puts`. The string representation of the `Proc` is a relatively
+standard object output, no prettying it up. The class is `Proc`. The `Proc`
+can be called without an argument and it runs without an error, and it seems
+to just assign the parameter to `nil`. The arity rules with `Proc` objects
+seem to not be strict
+
+Group 2
+
+A lambda is a special case of a `Proc` object. Specifically, it is an object
+of the class `Proc`, but it has different rules than a simple `Proc` object.
+Specifically, it has stricter arity rules, and cannot be called unless the
+number of arguments provided is the same as the number of parameters. There
+are two ways to create a lambda object: lambda { |parameter| code } or ->
+(parameter) { code }.
+
+Group 3
+
+Blocks are more similar to `Proc` objects in terms of their arity rules. They
+do not require that the number of arguments match the number of parameters,
+and will replace any unmatched parameter with `nil`. Also, using the `yield`
+keyword in a method and then failing to pass a block to that method upon
+invocation will raise a `LocalJumpError`.
+
+Group 4
+
+See above. Blocks are have lenient arity rules, and allow for too few
+arguments or too many. However, you will still get a `NameError` if you try to
+use a name that has been undefined.
